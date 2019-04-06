@@ -90,7 +90,7 @@ loop:                       ; pętla po buforze
 
     cmp     eax, 68020      ; czy plik zawiera liczbę 68020
     je      error           ; error jeśli tak
-    jnb     else_noFlag
+    ja      else_noFlag
 ; noFlag:                   ; to nie jest liczba większa od 68020 i mniejsza od 2^31
     bt      r14d, 1         ; czy była już sekwencja 6, 8, 0, 2, 0
     jc      continue        ; tak, continue
@@ -115,10 +115,11 @@ else_set1:                  ; nie, szukaj sekwencji od początku
     xor     r15d, r15d      ; ustaw aktualny indeks tablicy array na 0
     jmp     continue
 else_noFlag:
+    xor     r15d, r15d      ; szukaj sekwencji 6, 8, 0, 2, 0 od początku
     bt      r14d, 0         ; czy była już liczba większa od 68020 i mniejsza od 2^31
     jc      continue        ; tak, continue
     cmp     eax, 0x80000000 ; czy to jest liczba większa od 68020 i mniejsza od 2^31
-    ja      continue        ; nie, continue
+    jae     continue        ; nie, continue
 ; flag0:                    ; tak, to jest liczba większa od 68020 i mniejsza od 2^31
     bts     r14d, 0         ; ustaw we fladze bit nr 0 -- plik zawiera liczbę większą od 68020 i mniejszą od 2^31
 ; else_flag0:
