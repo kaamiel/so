@@ -1,4 +1,4 @@
-## Zadanie 1 — euron
+## Zadanie 2 — euron
 
 Zaimplementuj w asemblerze x86_64 moduł symulujący działanie sieci euronowej.
 Sieć składa się z `N` euronów, które są numerowane od `0` do `N − 1`. Moduł będzie
