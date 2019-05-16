@@ -1,4 +1,4 @@
-# SO
+# SO Assembly x86-64
 
 Operating Systems (Systemy operacyjne) tasks, mimuw.
 
